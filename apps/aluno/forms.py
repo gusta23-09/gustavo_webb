@@ -1,4 +1,23 @@
+from django import forms
 from apps.aluno.models import Aluno
 
 class AlunoForms(forms.ModelForm):
-    pass
+    class Meta:
+        model = Aluno
+        exclude = ['',]
+        labels = {
+            'matricula' : 'Matricula',
+            'status' : 'Ativo'
+        }
+
+        widgets = {
+            'nome' : forms.TextInput(attrs={'class': 'form-control', 'autofocus': 'autofocus'}),
+
+            'matricula': forms.TextInput(attrs={'class': 'form-control'}),
+
+            'email': forms.TextInput(attrs={'class': 'form-control'}),
+
+            'telefone':forms.TextInput(attrs={'class': 'form-control'}),
+
+            'status': forms.CheckboxInput(attrs={'class': 'form-control' 'form-check-input'})
+        }
